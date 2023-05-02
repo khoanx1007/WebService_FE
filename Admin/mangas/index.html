@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sachtruyen-Admin</title>
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="index.html">
+            <span id="logo-name" style="font-size: 20px;font-weight: bold;color: #17a2b8;">SACHTRUYEN.ADMIN</span>
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Trang chính</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="../index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Quản lí</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="../users/index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-list"></i>
+                </span>
+                <span class="hide-menu">Quản lí người dùng</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-list"></i>
+                </span>
+                <span class="hide-menu">Quản lí truyện</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">My Profile</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-mail fs-6"></i>
+                      <p class="mb-0 fs-3">My Account</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-list-check fs-6"></i>
+                      <p class="mb-0 fs-3">My Task</p>
+                    </a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Quản lý truyện</h5>
+                <div class="search-box">
+                  <div class="search-bar">
+                    <input type="text" class="form-control search-input" placeholder="Tìm kiếm...">
+                    <button class="btn btn-primary"><i class="ti ti-search"></i></button>
+                  </div>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Thêm truyện</button>
+                </div>                
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">ID</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Tên sách/truyện</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Thumbnail</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Code</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Thể loại</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Tác giả</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Mô tả</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Ngày phát hành</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">File URL</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Action</h6>
+                        </th>
+                      </tr>
+                    </thead>                    
+                    <tbody>
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">Harry Potter and the Philosopher's Stone</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                            <img src="https://example.com/thumbnails/harry_potter.jpg" alt="Thumbnail" class="img-thumbnail">
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">HP001</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">Fantasy</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">J.K. Rowling</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <details>
+                              <summary>Xem thêm...</summary>
+                              <p class="mb-0 fw-normal text-wrap">"Harry Potter và Hòn đá phù thuỷ" là cuốn đầu tiên trong loạt truyện phép thuật hấp dẫn của J.K. Rowling. Câu chuyện xoay quanh Harry Potter, một cậu bé mồ côi sống trong hủy diệt và phát hiện mình là phù thủy. Khi nhập học Hogwarts, trường phù thủy nổi tiếng, Harry khám phá bí mật về thế giới phép thuật và phải đối mặt với tên Voldemort độc ác. Cuốn sách kết hợp giữa thần thoại, phiêu lưu và tình bạn đầy sức mạnh.</p>
+                            </details>
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">June 26, 1997</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <a href="https://example.com/files/harry_potter.pdf" target="_blank" class="btn btn-primary">Xem</a>
+                        </td>
+                        <td class="border-bottom-0">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updateModal">Sửa</button>
+                            <button type="button" class="btn btn-danger">Xoá</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">2</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">The Lord of the Rings: The Fellowship of the Ring</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                            <img src="https://example.com/thumbnails/lotr.jpg" alt="Thumbnail" class="img-thumbnail">
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">LOTR001</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">Fantasy</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">J.R.R. Tolkien</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <details>
+                            <summary>Xem thêm...</summary>
+                            <p class="mb-0 fw-normal text-wrap">"The Fellowship of the Ring" là phần đầu tiên của bộ truyện "The Lord of the Rings". Nó kể về cuộc hành trình của một nhóm nhân vật đa dạng, gồm người Hobbit Frodo Baggins và các chiến binh, để hủy diệt chiếc vòng One Ring độc ác. Họ phải đối mặt với nguy hiểm, quái vật và cuộc chiến giữa ác và thiện. Frodo phải tiến về vùng đất tối tăm Mordor, nơi One Ring được tạo ra, để đặt nó vào lửa Orodruin và kết thúc sự thống trị của tên chúa tể Sauron. Truyện kết thúc với viễn cảnh của Frodo và bạn bè của ông đi vào cuộc hành trình tiếp theo.</p>
+                          </details>
+                      </td>
+                        <td class="border-bottom-0">
+                            <p class="mb-0 fw-normal">July 29, 1954</p>
+                        </td>
+                        <td class="border-bottom-0">
+                            <a href="https://example.com/files/lotr.pdf" target="_blank" class="btn btn-primary">Xem</a>
+                        </td>
+                        <td class="border-bottom-0">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updateModal">Sửa</button>
+                            <button type="button" class="btn btn-danger">Xoá</button>
+                        </td>
+                      </tr>
+                    </tbody>                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Thêm truyện</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Tên sách/truyện</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="thumbnail" class="form-label">Thumbnail</label>
+                    <input type="file" class="form-control" id="thumbnail">
+                  </div>
+                  <div class="mb-3">
+                    <label for="code" class="form-label">Code</label>
+                    <input type="text" class="form-control" id="code">
+                  </div>
+                  <div class="mb-3">
+                    <label for="theloai" class="form-label">Thể loại</label>
+                    <input type="text" class="form-control" id="theloai">
+                  </div>
+                  <div class="mb-3">
+                    <label for="tacgia" class="form-label">Tác giả</label>
+                    <input type="text" class="form-control" id="tacgia">
+                  </div>
+                  <div class="mb-3">
+                    <label for="mota" class="form-label">Mô tả</label>
+                    <textarea class="form-control" id="mota"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="ngayphathanh" class="form-label">Ngày phát hành</label>
+                    <input type="date" class="form-control" id="ngayphathanh">
+                  </div>
+                  <div class="mb-3">
+                    <label for="fileurl" class="form-label">File URL</label>
+                    <input type="file" class="form-control" id="fileurl">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Thêm</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Huỷ</button>
+                </form>                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Cập nhật truyện</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Tên sách/truyện</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="thumbnail" class="form-label">Thumbnail</label>
+                    <input type="file" class="form-control" id="thumbnail">
+                  </div>
+                  <div class="mb-3">
+                    <label for="code" class="form-label">Code</label>
+                    <input type="text" class="form-control" id="code">
+                  </div>
+                  <div class="mb-3">
+                    <label for="theloai" class="form-label">Thể loại</label>
+                    <input type="text" class="form-control" id="theloai">
+                  </div>
+                  <div class="mb-3">
+                    <label for="tacgia" class="form-label">Tác giả</label>
+                    <input type="text" class="form-control" id="tacgia">
+                  </div>
+                  <div class="mb-3">
+                    <label for="mota" class="form-label">Mô tả</label>
+                    <textarea class="form-control" id="mota"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="ngayphathanh" class="form-label">Ngày phát hành</label>
+                    <input type="date" class="form-control" id="ngayphathanh">
+                  </div>
+                  <div class="mb-3">
+                    <label for="fileurl" class="form-label">File URL</label>
+                    <input type="file" class="form-control" id="fileurl">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Huỷ</button>
+                </form>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+</body>
+</html>
