@@ -148,14 +148,10 @@
                     <label for="name" class="form-label">Tên sách/truyện</label>
                     <input type="text" class="form-control" id="name">
                   </div>
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label for="thumbnail" class="form-label">Thumbnail</label>
                     <input type="file" class="form-control" id="thumbnail">
-                  </div>
-                  <div class="mb-3">
-                    <label for="code" class="form-label">Code</label>
-                    <input type="text" class="form-control" id="code">
-                  </div>
+                  </div> -->
                   <div class="mb-3">
                     <label for="theloai" class="form-label">Thể loại</label>
                     <input type="text" class="form-control" id="theloai">
@@ -168,15 +164,15 @@
                     <label for="mota" class="form-label">Mô tả</label>
                     <textarea class="form-control" id="mota"></textarea>
                   </div>
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label for="ngayphathanh" class="form-label">Ngày phát hành</label>
                     <input type="date" class="form-control" id="ngayphathanh">
-                  </div>
+                  </div> -->
                   <div class="mb-3">
                     <label for="fileurl" class="form-label">File URL</label>
                     <input type="file" class="form-control" id="fileurl">
                   </div>
-                  <button type="submit" class="btn btn-primary">Thêm</button>
+                  <button type="button" class="btn btn-primary" id="addManga-btn">Thêm</button>
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Huỷ</button>
                 </form>                
               </div>
@@ -235,6 +231,50 @@
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
   <script>
+    
+    var user = JSON.parse(localStorage.getItem('user'));
+    var roles = JSON.parse(localStorage.getItem('roles'));
+    var token = JSON.parse(localStorage.getItem('token'));
+          console.log(token);
+    $('#addManga-btn').on('click',function(){
+      var name = $('#name').val();
+      var theloai = $('#theloai').val();
+      var tacgia = $('#tacgia').val();
+      var mota = $('#mota').val();
+      var fileurl = $('#fileurl').val();
+      dataf = {
+        "title":name,
+        "author":tacgia,
+        "category":theloai,
+        "description":mota,
+      }
+      userData = {
+        "id":user.id,
+        "username":user.username
+      }
+      var fileInfors= [],fileContents=[];
+      fileInfors.push(dataf);
+      fileContents.push(fileurl);
+      $.ajax({
+        url: 'http://localhost:8081/api/users/'+user.id+'/mangas',
+        type: "POST",
+        contentType: 'application/json',
+        headers:{
+                'Authorization': 'Bearer ' + token
+        },
+        data: {
+          "fileInfors":JSON.stringify(fileInfors),
+          "fileContents":JSON.stringify(fileContents),
+          "user":JSON.stringify(userData),
+        },
+        success: function(response) {
+          console.log(response);
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    });
     $.ajax({
       url: 'http://localhost:8081/api/mangas?page=1',
       type: 'GET',
@@ -276,9 +316,6 @@
           });
           $('body').on('click', '#edit-btn', function() {
             var id = $(this).closest('tr').find('h6:first').text();
-            var user = JSON.parse(localStorage.getItem('user'));
-            var roles = JSON.parse(localStorage.getItem('roles'));
-            var token = JSON.parse(localStorage.getItem('token'));
             $.ajax({
               url: 'http://localhost:8081/api/mangas/' + id,
               type: 'GET',
@@ -320,7 +357,6 @@
                 'Authorization': 'Bearer ' + token
               },
               contentType: 'application/json',
-              data: JSON.stringify(roles),
               success: function(data) {
                 $(this).closest('tr').remove();
                 alert(data.message);
@@ -336,6 +372,7 @@
           console.log(jqXHR.responseText);
         }
       });
+    
   </script>
 </body>
 </html>

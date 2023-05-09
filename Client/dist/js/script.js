@@ -1,4 +1,23 @@
+function checkToken() {
+  var token = localStorage.getItem('token');
+  if (token) {
+    // Nếu có token, hiển thị nội dung đăng xuất
+    $('.logout').removeClass('d-none');
+    $('.logreg').addClass('d-none');
+  } else {
+    // Nếu không có token, hiển thị nội dung đăng nhập
+    $('.logreg').removeClass('d-none');
+    $('.logout').addClass('d-none');
+  }
+}
+$('#logout-btn').click(function() {
+  // Xoá token
+  localStorage.removeItem('token');
+  // f5 trang
+  window.location.href = "index.html";
+});
 $(document).ready(function(){
+  checkToken();
     $('.owl-carousel').owlCarousel({
         loop:true,
         nav:false,
@@ -43,29 +62,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
 });
-function loadPDF(url) {
-  const pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-  const container = document.getElementById('pdf-container');
-
-  pdfjsLib.getDocument(url).promise.then(function (pdf) {
-    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-      pdf.getPage(pageNum).then(function (page) {
-        const canvas = document.createElement('canvas');
-        container.appendChild(canvas);
-
-        const context = canvas.getContext('2d');
-        const viewport = page.getViewport({ scale: 1.5 });
-
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        page.render({
-          canvasContext: context,
-          viewport: viewport,
-        });
-      });
-    }
-  });
-}
-loadPDF('dist/chuthong1.pdf');

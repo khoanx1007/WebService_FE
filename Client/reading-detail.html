@@ -28,12 +28,24 @@
                         </form>
                     </div>                                                                               
                 </div>
-                <div class="col-3"> 
-                    <a href="login.html" class="btn btn-info font-weight-bold">Đăng nhập</a>
-                    <a href="register.html" class="btn btn-info font-weight-bold">Đăng ký</a>
+                <div class="col-3 logreg"> 
+                  <a href="login.html" class="btn btn-info font-weight-bold">Đăng nhập</a>
+                  <a href="register.html" class="btn btn-info font-weight-bold">Đăng ký</a>
+              </div>
+              <div class="col-3 logout"> 
+                <div class="navbar-collapse justify-content-end px-0">
+                  <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                    <li class="nav-item dropdown">
+                      <img src="dist/img/book-logo.jpg" alt="" width="35" height="35" class="rounded-circle">
+                    </li>
+                  </ul>
+                  <div class="dropdown-m" aria-labelledby="drop2">
+                    <button class="btn btn-outline-primary" id="logout-btn">Đăng xuất</button>
+                  </div>
                 </div>
+              </div>
             </div>
-    </div>
+      </div>
     <nav class="navbar">
         <div class="container">
           <ul class="nav-menu">
@@ -86,5 +98,43 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="dist/js/script.js"></script>
+    <script>
+      function loadPDF(url) {
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+      const container = document.getElementById('pdf-container');
+
+      pdfjsLib.getDocument(url).promise.then(function (pdf) {
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          pdf.getPage(pageNum).then(function (page) {
+            const canvas = document.createElement('canvas');
+            container.appendChild(canvas);
+
+            const context = canvas.getContext('2d');
+            const viewport = page.getViewport({ scale: 1.5 });
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            page.render({
+              canvasContext: context,
+              viewport: viewport,
+            });
+          });
+        }
+      });
+    }
+    var currentUrl = window.location.href;
+
+// Tạo đối tượng URL từ URL hiện tại
+    var url = new URL(currentUrl);
+
+    // Lấy giá trị của tham số 'path' trong query string
+    var path = url.searchParams.get("path");
+    console.log(path);
+
+    // Sử dụng biến path để đọc file PDF
+    loadPDF(''+path+'');
+    </script>
   </body>
 </html>

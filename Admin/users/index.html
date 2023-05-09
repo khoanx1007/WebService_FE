@@ -145,7 +145,7 @@
     var roles = JSON.parse(localStorage.getItem('roles'));
     var token = JSON.parse(localStorage.getItem('token'));
     $.ajax({
-      url: 'http://localhost:8081/api/mangas?page=1',
+      url: 'http://localhost:8081/api/users/'+user.id+'/mangas?page=1',
       type: 'GET',
       contentType: 'application/json',
       success: function(data) {
