@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Đăng ký</title>
     <link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -58,29 +58,24 @@
                 <h3 class="card-title">Đăng ký</h3>
                 <form id="register-form">
                   <div class="form-group">
-                    <label for="username">Tên đăng nhập</label>
+                    <label for="username">Tên tài khoản</label>
                     <input type="text" class="form-control" id="username">
-                    <div class="invalid-feedback">Tên đăng nhập không hợp lệ.</div>
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email">
-                    <div class="invalid-feedback">Email không hợp lệ.</div>
                   </div>
                   <div class="form-group">
                     <label for="name">Họ và tên</label>
                     <input type="text" class="form-control" id="name">
-                    <div class="invalid-feedback">Họ và tên không hợp lệ.</div>
                   </div>
                   <div class="form-group">
                     <label for="password">Mật khẩu</label>
                     <input type="password" class="form-control" id="password">
-                    <div class="invalid-feedback">Mật khẩu không hợp lệ.</div>
                   </div>
                   <div class="form-group">
                     <label for="confirm-password">Nhập lại mật khẩu</label>
                     <input type="password" class="form-control" id="confirm-password">
-                    <div class="invalid-feedback">Mật khẩu không khớp.</div>
                   </div>
                   <button type="submit" class="btn btn-primary" style="background-color: #17a2b8;">Đăng ký</button>
                   <div class="alert alert-danger mt-3 d-none" id="error-message">Có lỗi xảy ra. Vui lòng kiểm tra lại thông tin đăng ký.</div>
@@ -123,6 +118,58 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="dist/js/script.js"></script>
+    <script>
+      $(document).ready(function() {
+      // Bắt sự kiện submit form đăng ký
+      $('#register-form').submit(function(event) {
+        // Ngăn chặn hành động mặc định của trình duyệt khi submit form
+        event.preventDefault();
+        
+        // Lấy giá trị từ các trường input
+        var username = $('#username').val().trim();
+        var email = $('#email').val().trim();
+        var name = $('#name').val().trim();
+        var password = $('#password').val().trim();
+        var confirmPassword = $('#confirm-password').val().trim();
+
+        // Validate các trường input
+        if (!username || !email || !name || !password || !confirmPassword) {
+          // Hiển thị thông báo lỗi
+          $('#error-message').text('Vui lòng điền đầy đủ thông tin đăng ký.').removeClass('d-none');
+          return;
+        } else if (password !== confirmPassword) {
+          // Hiển thị thông báo lỗi
+          $('#error-message').text('Mật khẩu không khớp.').removeClass('d-none');
+          return;
+        }
+
+        // Gửi dữ liệu đến server
+        var userData = {
+          "username": username,
+          "email": email,
+          "fullname": name,
+          "password": password
+    };
+    console.log(userData);
+        $.ajax({
+          url: 'http://127.0.0.1:8081/api/auth/signup',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(userData),
+          success: function(data) {
+            alert('Đăng ký thành công.');
+            window.location.href="login.html"
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            // Lấy thông báo lỗi từ responseText
+            var errorMessage = JSON.parse(jqXHR.responseText).message;
+            // Hiển thị thông báo lỗi
+            $('#error-message').text(errorMessage).removeClass('d-none');
+          }
+        });
+      });
+    });
+    </script>
   </body>
 </html>
   

@@ -16,44 +16,17 @@ $(document).ready(function(){
             }
         }
     });
-    $('#login-form').submit(function(event) {
-        event.preventDefault();
-    
-        var username = $('#username').val();
-        var password = $('#password').val();
-    
-        if (username === '') {
-          $('#username').addClass('is-invalid');
-          return;
-        } else {
-          $('#username').removeClass('is-invalid');
-        }
-    
-        if (password === '') {
-          $('#password').addClass('is-invalid');
-          return;
-        } else {
-          $('#password').removeClass('is-invalid');
-        }
-    
-        if (username === 'admin' && password === 'admin123') {
-          $('#error-message').addClass('d-none');
-          alert('Đăng nhập thành công!');
-        } else {
-          $('#error-message').removeClass('d-none');
-        }
-      });
-      $('.dropdown').hover(function() {
-        $(this).find('.dropdown-menu').show();
-      }, function() {
-        $(this).find('.dropdown-menu').hide();
-      });
+    $('.dropdown').hover(function() {
+      $(this).find('.dropdown-menu').show();
+    }, function() {
+      $(this).find('.dropdown-menu').hide();
+    });
   
-      $('.dropdown-item').hover(function() {
-        $(this).css('color', '#17a2b8');
-      }, function() {
-        $(this).css('color', '');
-      });
+    $('.dropdown-item').hover(function() {
+      $(this).css('color', '#17a2b8');
+    }, function() {
+      $(this).css('color', '');
+    });
 });
 document.addEventListener('DOMContentLoaded', function() {
   var dropdownToggle = document.querySelector('.navbar-collapse .rounded-circle');

@@ -139,6 +139,16 @@ body {
     height: 100%;
     object-fit: cover;
   }
+  .slide-text>h4>a {
+    color: white;
+  }
+  .item>h3>a {
+    color: #17a2b8;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  
   
   .slide-text {
     position: absolute;

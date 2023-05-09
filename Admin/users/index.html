@@ -77,33 +77,6 @@
               </a>
             </li>
           </ul>
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
         </nav>
       </header>
       <!--  Header End -->
@@ -113,198 +86,47 @@
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
               <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Quản lý người dùng</h5>
+                <h5 class="card-title fw-semibold mb-4">Quản lý truyện</h5>
                 <div class="search-box">
                   <div class="search-bar">
                     <input type="text" class="form-control search-input" placeholder="Tìm kiếm...">
                     <button class="btn btn-primary"><i class="ti ti-search"></i></button>
                   </div>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Thêm người dùng</button>
                 </div>                
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                       <tr>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">STT</h6>
+                            <h6 class="fw-semibold mb-0">ID</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Tên</h6>
+                            <h6 class="fw-semibold mb-0">Tên sách/truyện</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Avatar</h6>
+                            <h6 class="fw-semibold mb-0">Thumbnail</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Username</h6>
+                            <h6 class="fw-semibold mb-0">Danh muc</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Email</h6>
+                            <h6 class="fw-semibold mb-0">Tác giả</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Google_id</h6>
+                            <h6 class="fw-semibold mb-0">Mô tả</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Facebook_id</h6>
+                            <h6 class="fw-semibold mb-0">Ngày</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Action</h6>
+                            <h6 class="fw-semibold mb-0">File URL</h6>
                         </th>
                       </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">1</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">Tokamojena</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <img src="avatar.jpg" alt="Avatar" class="avatar">
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">@username1</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">email1@example.com</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Google ID 1</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Facebook ID 1</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">Sửa</button>
-                            <button class="btn btn-danger">Xoá</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">2</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">Kahisla Onekaos</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <img src="avatar.jpg" alt="Avatar" class="avatar">
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">@username2</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">email2@example.com</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Google ID 2</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Facebook ID 2</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">Sửa</button>
-                            <button class="btn btn-danger">Xoá</button>
-                          </td>
-                        </tr>
-                    </tbody>
+                    </thead>                    
+                    <tbody class="list-manga">
+                    </tbody>                    
                   </table>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="addModalLabel">Thêm người dùng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Tên</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="avatar" class="form-label">Avatar</label>
-                    <input type="file" class="form-control" id="avatar">
-                  </div>
-                  <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username">
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" id="password">
-                  </div>
-                  <div class="mb-3">
-                    <label for="password_re" class="form-label">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="password_re">
-                  </div>
-                  <div class="mb-3">
-                    <label for="google_id" class="form-label">Google ID</label>
-                    <input type="text" class="form-control" id="google_id">
-                  </div>
-                  <div class="mb-3">
-                    <label for="facebook_id" class="form-label">Facebook ID</label>
-                    <input type="text" class="form-control" id="facebook_id">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Thêm</button>
-                  <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Huỷ</button>
-                </form>  
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Sửa người dùng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Tên</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="avatar" class="form-label">Avatar</label>
-                    <input type="file" class="form-control" id="avatar">
-                  </div>
-                  <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username">
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" id="password">
-                  </div>
-                  <div class="mb-3">
-                    <label for="password_re" class="form-label">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="password_re">
-                  </div>
-                  <div class="mb-3">
-                    <label for="google_id" class="form-label">Google ID</label>
-                    <input type="text" class="form-control" id="google_id">
-                  </div>
-                  <div class="mb-3">
-                    <label for="facebook_id" class="form-label">Facebook ID</label>
-                    <input type="text" class="form-control" id="facebook_id">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Thêm</button>
-                  <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Huỷ</button>
-                </form>  
               </div>
             </div>
           </div>
@@ -316,6 +138,53 @@
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
+  <script>
+    var id = $(this).closest('tr').find('h6:first').text();
+    var user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.id);
+    var roles = JSON.parse(localStorage.getItem('roles'));
+    var token = JSON.parse(localStorage.getItem('token'));
+    $.ajax({
+      url: 'http://localhost:8081/api/mangas?page=1',
+      type: 'GET',
+      contentType: 'application/json',
+      success: function(data) {
+        $.each(data.data,function(index,manga) {
+          var html = '<tr>' +
+              '<td class="border-bottom-0"><h6 class="fw-semibold mb-0">' + manga.id + '</h6></td>' +
+              '<td class="border-bottom-0">' +
+                '<h6 class="fw-semibold mb-1">' + manga.title + '</h6>' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<img src="https://example.com/thumbnails/' + manga.thumbnail + '" alt="Thumbnail" class="img-thumbnail">' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<p class="mb-0 fw-normal">' + manga.category + '</p>' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<p class="mb-0 fw-normal">' + manga.author + '</p>' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<details>' +
+                  '<summary>Xem thêm...</summary>' +
+                  '<p class="mb-0 fw-normal text-wrap">' + manga.description + '</p>' +
+                '</details>' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<p class="mb-0 fw-normal">' + manga.created_at + '</p>' +
+              '</td>' +
+              '<td class="border-bottom-0">' +
+                '<a href="' + manga.path + '" target="_blank" class="btn btn-primary">Xem</a>' +
+              '</td>' +
+            '</tr>';
+          $('.list-manga').append(html);
+          });        
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR.responseText);
+        }
+      });
+  </script>
 </body>
 
 </html>

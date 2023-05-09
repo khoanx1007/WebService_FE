@@ -27,11 +27,11 @@
                         </form>
                     </div>                                                                               
                 </div>
-                <!-- <div class="col-3"> 
+                <div class="col-3 logreg"> 
                     <a href="login.html" class="btn btn-info font-weight-bold">Đăng nhập</a>
                     <a href="register.html" class="btn btn-info font-weight-bold">Đăng ký</a>
-                </div> -->
-                <div class="col-3"> 
+                </div>
+                <div class="col-3 logout"> 
                   <div class="navbar-collapse justify-content-end px-0">
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                       <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                       </li>
                     </ul>
                     <div class="dropdown-m" aria-labelledby="drop2">
-                      <a href="" class="btn btn-outline-primary  d-block">Đăng xuất</a>
+                      <button class="btn btn-outline-primary" id="logout-btn">Đăng xuất</button>
                     </div>
                   </div>
                 </div>
@@ -64,84 +64,12 @@
     </nav>    
     <div class="container list-r mt-3">
       <div class="font-weight-bold h3 mb-3">Truyện đề cử</div>
-      <div class="row d-flex flex-wrap  ">
-        <div class="col-12 owl-carousel slide-row">
-          <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        <div class="item-slide">
-          <img src="https://via.placeholder.com/500x400" alt="Slide Image">
-          <div class="slide-text">
-              <h3>Tên sản phẩm</h3>
-              <p>Tình trạng sản phẩm</p>
-          </div>                 
-        </div>
-        </div>
+      <div class="row d-flex flex-wrap slide-row">
       </div>
     </div>        
     <div class="container list-b mt-3">
         <div class="font-weight-bold h3 mb-3">Truyện mới cập nhật</div>
-        <div class="row d-flex flex-wrap">
-            <div class="col-3">
-              <div class="item">
-                <img src="https://product.hstatic.net/200000343865/product/ong-gia-va-bien-ca---tac-pham-chon-loc---van-hoc-my_b02780813f3a4dbb90b681de1be62cf2_master.jpg" alt="Item 1">
-                <h4 class="item-title">Item 1</h4>
-                <p class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="item">
-                <img src="https://sach.info/wp-content/uploads/2022/12/2020_11_17_15_30_41_1-390x510-1.jpg" alt="Item 2">
-                <h4 class="item-title">Item 2</h4>
-                <p class="item-text ">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="item">
-                <img src="https://images.thuvienpdf.com/ylP651.webp" alt="Item 3">
-                <h4 class="item-title">Item 3</h4>
-                <p class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="item">
-                <img src="https://m.media-amazon.com/images/I/71oHN8-Zk6L._AC_UF1000,1000_QL80_.jpg" alt="Item 4">
-                <h4 class="item-title">Item 4</h4>
-                <p class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
+        <div class="row d-flex flex-wrap" id="manga-container">
         </div>
     </div>      
     <footer class="mt-3">
@@ -175,7 +103,55 @@
     <script src="dist/bootstrap/js/bootstrap.min.js"></script>
     <script src="dist/font-awesome/js/all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="dist/owlcarousel/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      function checkToken() {
+        var token = localStorage.getItem('token');
+        if (token) {
+          // Nếu có token, hiển thị nội dung đăng xuất
+          $('.logout').removeClass('d-none');
+          $('.logreg').addClass('d-none');
+        } else {
+          // Nếu không có token, hiển thị nội dung đăng nhập
+          $('.logreg').removeClass('d-none');
+          $('.logout').addClass('d-none');
+        }
+      }
+      $('#logout-btn').click(function() {
+        // Xoá token
+        localStorage.removeItem('token');
+        // f5 trang
+        window.location.href = "index.html";
+      });
+      $(document).ready(function() {
+          checkToken();
+          $.ajax({
+          url: 'http://localhost:8081/api/mangas?page=1',
+          type: 'GET',
+          contentType: 'application/json',
+          success: function(data) {
+            $.each(data.data,function(index,manga) {
+              var html = '<div class="col-3">' + '<div class="item">'+
+                        '<img src="https://via.placeholder.com/500x400">'+
+                        '<h3><a href="'+manga.path+'">'+manga.title+'</a>'+'</h3>'+
+                        '<p class="item-text">'+manga.author+'</p>'
+                        +'</div>'+'</div>';
+              var html2 = '<div class="col-3">'+
+                          '<div class="item-slide">'+
+                          '<img src="https://via.placeholder.com/500x400" alt="Slide Image">'+
+                          '<div class="slide-text">'+
+                          '<h4><a href="'+manga.path+'">'+manga.title+'</a></h4>'+
+                          '<p>'+manga.author+'</p>'+
+                          '</div>'+'</div>'+'</div>'; 
+              $('#manga-container').append(html);
+              $('.slide-row').append(html2);
+            });
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+          }
+        });
+      });
+    </script>
     <script src="dist/js/script.js"></script>
   </body>
 </html>

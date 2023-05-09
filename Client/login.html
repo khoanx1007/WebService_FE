@@ -60,12 +60,12 @@
                   <div class="form-group">
                     <label for="username">Tên đăng nhập</label>
                     <input type="text" class="form-control" id="username">
-                    <div class="invalid-feedback">Tên đăng nhập không hợp lệ.</div>
+                    <div class="invalid-feedback">Tên đăng nhập không để trống.</div>
                   </div>
                   <div class="form-group">
                     <label for="password">Mật khẩu</label>
                     <input type="password" class="form-control" id="password">
-                    <div class="invalid-feedback">Mật khẩu không hợp lệ.</div>
+                    <div class="invalid-feedback">Mật khẩu không để trống.</div>
                   </div>
                   <button type="submit" class="btn btn-primary" style="background-color: #17a2b8;">Đăng nhập</button>
                   <div class="alert alert-danger mt-3 d-none" id="error-message">Tên đăng nhập hoặc mật khẩu không đúng.</div>
@@ -108,5 +108,46 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="dist/js/script.js"></script>
+    <script>
+    $('#login-form').submit(function(event) {
+      event.preventDefault();
+    
+      var username = $('#username').val();
+      var password = $('#password').val();
+    
+      if (username === '') {
+        $('#username').addClass('is-invalid');
+      } else {
+        $('#username').removeClass('is-invalid');
+      }
+    
+      if (password === '') {
+        $('#password').addClass('is-invalid');
+      } else {
+        $('#password').removeClass('is-invalid');
+      }
+  
+    var userData = {
+      "username": username,
+      "password": password
+    };
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8081/api/auth/signin',
+      contentType: 'application/json',
+      data: JSON.stringify(userData),
+      success: function(response) {
+          $('#error-message').addClass('d-none');
+          window.location.href = "index.html";
+          localStorage.setItem('token', JSON.stringify(response.token));
+          localStorage.setItem('user', JSON.stringify(response.userDTO));
+          localStorage.setItem('roles', JSON.stringify(response.roles));
+      },
+      error: function(xhr, status, error) {
+        $('#error-message').removeClass('d-none');
+      }
+    });
+  });
+  </script>
   </body>
 </html>
