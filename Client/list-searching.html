@@ -21,16 +21,28 @@
                     <div class="search-container">
                         <form action="#">
                           <div class="input-container">
-                            <input type="text" placeholder="Tìm kiếm...">
+                            <input type="text" placeholder="Tìm kiếm..." id="#search-value">
                             <button type="submit"><i class="fa fa-search"></i></button>
                           </div>
                         </form>
                     </div>                                                                               
                 </div>
-                <div class="col-3"> 
+                <div class="col-3 logreg"> 
                   <a href="login.html" class="btn btn-info font-weight-bold">Đăng nhập</a>
                   <a href="register.html" class="btn btn-info font-weight-bold">Đăng ký</a>
+              </div>
+              <div class="col-3 logout"> 
+                <div class="navbar-collapse justify-content-end px-0">
+                  <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                    <li class="nav-item dropdown">
+                      <img src="dist/img/book-logo.jpg" alt="" width="35" height="35" class="rounded-circle">
+                    </li>
+                  </ul>
+                  <div class="dropdown-m" aria-labelledby="drop2">
+                    <button class="btn btn-outline-primary" id="logout-btn">Đăng xuất</button>
+                  </div>
                 </div>
+              </div>
             </div>
     </div>
     <nav class="navbar">

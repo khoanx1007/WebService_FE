@@ -16,7 +16,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="index.html">
+          <a href="../../Client/index.html">
             <span id="logo-name" style="font-size: 20px;font-weight: bold;color: #17a2b8;">SACHTRUYEN.ADMIN</span>
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -47,7 +47,7 @@
                 <span>
                   <i class="ti ti-list"></i>
                 </span>
-                <span class="hide-menu">Quản lí người dùng</span>
+                <span class="hide-menu">Truyện của bạn</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -90,7 +90,6 @@
                 <div class="search-box">
                   <div class="search-bar">
                     <input type="text" class="form-control search-input" placeholder="Tìm kiếm...">
-                    <button class="btn btn-primary"><i class="ti ti-search"></i></button>
                   </div>
                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Thêm truyện</button>
                 </div>                
@@ -111,7 +110,7 @@
                             <h6 class="fw-semibold mb-0">Danh muc</h6>
                         </th>
                         <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Tác giả</h6>
+                            <h6 class="fw-semibold mb-0">Người tạo</h6>
                         </th>
                         <th class="border-bottom-0">
                             <h6 class="fw-semibold mb-0">Mô tả</h6>
@@ -157,10 +156,6 @@
                     <input type="text" class="form-control" id="theloai">
                   </div>
                   <div class="mb-3">
-                    <label for="tacgia" class="form-label">Tác giả</label>
-                    <input type="text" class="form-control" id="tacgia">
-                  </div>
-                  <div class="mb-3">
                     <label for="mota" class="form-label">Mô tả</label>
                     <textarea class="form-control" id="mota"></textarea>
                   </div>
@@ -193,27 +188,15 @@
                     <input type="text" class="form-control" id="eName">
                   </div>
                   <div class="mb-3">
-                    <label for="thumbnail" class="form-label">Thumbnail</label>
-                    <input type="file" class="form-control" id="eThumbnail">
-                  </div>
-                  <div class="mb-3">
                     <label for="code" class="form-label">Danh mục</label>
                     <input type="text" class="form-control" id="eCategory">
-                  </div>
-                  <div class="mb-3">
-                    <label for="tacgia" class="form-label">Tác giả</label>
-                    <input type="text" class="form-control" id="eTacgia">
                   </div>
                   <div class="mb-3">
                     <label for="mota" class="form-label">Mô tả</label>
                     <textarea class="form-control" id="eMota"></textarea>
                   </div>
                   <div class="mb-3">
-                    <label for="ngayphathanh" class="form-label">Ngày phát hành</label>
-                    <input type="date" class="form-control" id="eNgayphathanh">
-                  </div>
-                  <div class="mb-3">
-                    <label for="fileurl" class="form-label">File URL</label>
+                    <label for="fileurl" class="form-label">Cập nhật File</label>
                     <input type="file" class="form-control" id="eFileurl">
                   </div>
                   <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -232,49 +215,54 @@
   <script src="../assets/js/app.min.js"></script>
   <script>
     
+    var formData = new FormData();
     var user = JSON.parse(localStorage.getItem('user'));
     var roles = JSON.parse(localStorage.getItem('roles'));
     var token = JSON.parse(localStorage.getItem('token'));
           console.log(token);
+    formData.append("user", JSON.stringify({
+      "id": user.id, 
+      "username": user.username
+    }))
+    
+
     $('#addManga-btn').on('click',function(){
       var name = $('#name').val();
       var theloai = $('#theloai').val();
       var tacgia = $('#tacgia').val();
       var mota = $('#mota').val();
       var fileurl = $('#fileurl').val();
-      dataf = {
-        "title":name,
-        "author":tacgia,
-        "category":theloai,
-        "description":mota,
-      }
-      userData = {
-        "id":user.id,
-        "username":user.username
-      }
-      var fileInfors= [],fileContents=[];
-      fileInfors.push(dataf);
-      fileContents.push(fileurl);
+
+      formData.append(
+      "fileContents", $('#fileurl')[0].files[0]
+      );
+
+      formData.append("fileInfors", JSON.stringify([{
+        "author": tacgia,
+        "category": theloai,
+        "description": mota,
+        "title": name
+      }]));
       $.ajax({
         url: 'http://localhost:8081/api/users/'+user.id+'/mangas',
-        type: "POST",
-        contentType: 'application/json',
-        headers:{
-                'Authorization': 'Bearer ' + token
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`
         },
-        data: {
-          "fileInfors":JSON.stringify(fileInfors),
-          "fileContents":JSON.stringify(fileContents),
-          "user":JSON.stringify(userData),
-        },
+        processData: false,
+        contentType: false,
+        data: formData,
         success: function(response) {
-          console.log(response);
+          alert('Add manga successfully');
+          location.reload();
         },
         error: function(xhr, status, error) {
           console.log(xhr.responseText);
         }
       });
     });
+
+
     $.ajax({
       url: 'http://localhost:8081/api/mangas?page=1',
       type: 'GET',
@@ -313,7 +301,9 @@
               '</td>' +
             '</tr>';
           $('.list-manga').append(html);
-          });
+        });
+
+
           $('body').on('click', '#edit-btn', function() {
             var id = $(this).closest('tr').find('h6:first').text();
             $.ajax({
@@ -321,6 +311,7 @@
               type: 'GET',
               contentType: 'application/json',
               success: function(data) {
+                console.log(data);
                 $.each(data.data,function(index,manga){
                   var ext = manga.path.split('.').pop()
                   var createdAt = new Date(manga.created_at);
@@ -334,7 +325,7 @@
                     $('#eThumbnail').val(manga.thumbnailUrl);
                   }
                   if (data.path) {
-                    console.log('1');
+                    $('#eFileurl').val(manga.path);
                   }
                   $('#updateModal').modal('show');
                 });

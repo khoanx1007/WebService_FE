@@ -61,12 +61,7 @@
             </li>
           </ul>
         </div>
-    </nav>    
-    <div class="container list-r mt-3">
-      <div class="font-weight-bold h3 mb-3">Truyện đề cử</div>
-      <div class="row d-flex flex-wrap slide-row">
-      </div>
-    </div>        
+    </nav>            
     <div class="container list-b mt-3">
         <div class="font-weight-bold h3 mb-3">Truyện mới cập nhật</div>
         <div class="row d-flex flex-wrap" id="manga-container">
@@ -114,19 +109,11 @@
           success: function(data) {
             $.each(data.data,function(index,manga) {
               var html = '<div class="col-3">' + '<div class="item">'+
-                        '<img src="https://via.placeholder.com/500x400">'+
-                        '<h3><a href="reading-detail.html">'+manga.title+'</a>'+'</h3>'+
+                        '<img src="https://popsimg.akamaized.net/api/v2/containers/file2/cms_assets/nhatdailinhhau_thumb_1920x1080__notext_-3eef7bfee128-1618570334773-Ud3MMMxD.jpg?v=0">'+
+                        '<h3><a href="reading-detail.html?path='+manga.path+'">'+manga.title+'</a>'+'</h3>'+
                         '<p class="item-text">'+manga.author+'</p>'
                         +'</div>'+'</div>';
-              var html2 = '<div class="col-3">'+
-                          '<div class="item-slide">'+
-                          '<img src="https://via.placeholder.com/500x400" alt="Slide Image">'+
-                          '<div class="slide-text">'+
-                          '<h4><a href="reading-detail.html?path='+manga.path+'">'+manga.title+'</a></h4>'+
-                          '<p>'+manga.author+'</p>'+
-                          '</div>'+'</div>'+'</div>'; 
               $('#manga-container').append(html);
-              $('.slide-row').append(html2);
             });
           },
           error: function(jqXHR, textStatus, errorThrown) {
